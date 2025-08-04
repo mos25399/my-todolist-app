@@ -1,0 +1,22 @@
+/* --- 1. 覆蓋 Bootstrap 預設變數 --- */
+// 在這裡定義的變數，必須在引入 Bootstrap 之前
+
+// 將預設的主題藍色，改為一個紫色調
+$primary: #6f42c1; 
+
+/* --- 2. 引入 Bootstrap SCSS --- */
+@import "bootstrap/scss/bootstrap";
+
+/* --- 3. 定義全域基礎樣式 --- */
+body {
+  // 讓頁面滾動更平滑 (如果有的話)
+  scroll-behavior: smooth;
+}
+
+/* --- 4. 撰寫特定元件的樣式 --- */
+// 針對 Todo List 已完成項目的文字，做一些美化
+.todo-item-completed {
+  color: #6c757d; // 使用 Bootstrap 的 secondary 顏色
+  // 讓刪除線的動畫效果更柔和
+  transition: color 0.3s ease-in-out;
+}
