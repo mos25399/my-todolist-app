@@ -11,6 +11,7 @@ $primary: #6f42c1;
 body {
   // 讓頁面滾動更平滑 (如果有的話)
   scroll-behavior: smooth;
+  background-color: #f8f9fa; // 設定一個柔和的淺灰色背景
 }
 
 /* --- 4. 撰寫特定元件的樣式 --- */
@@ -19,4 +20,34 @@ body {
   color: #6c757d; // 使用 Bootstrap 的 secondary 顏色
   // 讓刪除線的動畫效果更柔和
   transition: color 0.3s ease-in-out;
+}
+/* --- 5. 修正 DatePicker 清除按鈕與文字重疊問題 --- */
+.react-datepicker__input-container {
+  // 讓 datepicker 的外層容器也佔滿可用空間
+  width: 100%;
+
+  .form-control {
+    // 稍微增加右邊的內距，為 "X" 按鈕騰出空間
+    // Bootstrap 預設是 .75rem，我們稍微加大
+    padding-right: 2.5rem !important; 
+  }
+}
+/* --- 6. 修正 Todo List 的 DatePicker 寬度問題 --- */
+.date-picker-wrapper {
+  // 設定一個固定的寬度，確保能容納完整的日期文字
+  // 您可以根據需要微調這個數值
+  width: 200px; 
+  flex-shrink: 0; // 防止這個元件在 d-flex 佈局中被壓縮
+}
+/* --- 7.優化 dnd-kit 拖曳把手的滑鼠游標 --- */
+
+// 我們為 bi-grip-vertical 這個圖示所在的元素，設定一個 class，例如 .drag-handle
+.drag-handle {
+  cursor: grab; // 預設顯示「可抓取」的手掌
+  touch-action: none; // 改善在觸控螢幕上的體驗
+
+  // 當滑鼠「按下」這個把手時
+  &:active {
+    cursor: grabbing; // 強制顯示「正在抓取」的手掌
+  }
 }
